@@ -1,12 +1,43 @@
-const express = require("express");
+import "dotenv/config";
+import express from "express";
+import session from "express-session";
+import passport from "passport";
+import { PrismaSessionStore } from "@quixo3/prisma-session-store";
+import { fileURLToPath } from "url";
+import path from "path";
+import { prisma } from "./lib/prisma.js";
+import "./lib/auth.js";
+import authRouter from "./routes/auth.js";
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 const PORT = 3000;
 
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
 app.use(express.urlencoded({ extended: false }));
 
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 7 * 24 * 60 * 60 * 1000 },
+    store: new PrismaSessionStore(prisma, {
+      checkPeriod: 2 * 60 * 1000,
+      dbRecordIdIsSessionId: true,
+    }),
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use("/", authRouter);
+
 app.get("/", (req, res) => {
-  res.send("Hello, World!");
+  res.send(`Hello, ${req.user ? req.user.username : "World"}!`);
 });
 
 app.listen(PORT, () => {
