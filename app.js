@@ -8,6 +8,9 @@ import path from "path";
 import { prisma } from "./lib/prisma.js";
 import "./lib/auth.js";
 import authRouter from "./routes/auth.js";
+import indexRouter from "./routes/index.js";
+import foldersRouter from "./routes/folders.js";
+import filesRouter from "./routes/files.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
@@ -28,17 +31,16 @@ app.use(
       checkPeriod: 2 * 60 * 1000,
       dbRecordIdIsSessionId: true,
     }),
-  })
+  }),
 );
 
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.use("/", authRouter);
-
-app.get("/", (req, res) => {
-  res.send(`Hello, ${req.user ? req.user.username : "World"}!`);
-});
+app.use("/", indexRouter);
+app.use("/folders", foldersRouter);
+app.use("/files", filesRouter);
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
