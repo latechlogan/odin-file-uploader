@@ -2,7 +2,7 @@ import bcrypt from "bcryptjs";
 import { prisma } from "../lib/prisma.js";
 
 const registerGet = (req, res) => {
-  res.render("register", { error: null });
+  res.render("register", { user: req.user || null, error: null });
 };
 
 const registerPost = async (req, res, next) => {
@@ -15,6 +15,7 @@ const registerPost = async (req, res, next) => {
   } catch (err) {
     if (err.code === "P2002") {
       return res.render("register", {
+        user: req.user || null,
         error: "Username or email already taken.",
       });
     }
@@ -25,13 +26,13 @@ const registerPost = async (req, res, next) => {
 const loginGet = (req, res) => {
   const messages = req.session.messages || [];
   req.session.messages = [];
-  res.render("login", { error: messages[messages.length - 1] ?? null });
+  res.render("login", { user: req.user || null, error: messages[messages.length - 1] ?? null });
 };
 
 const logoutPost = (req, res, next) => {
   req.logout((err) => {
     if (err) return next(err);
-    res.redirect("/login");
+    res.redirect("/");
   });
 };
 
