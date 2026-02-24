@@ -2,27 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Log In</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log in — Drivebox</title>
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <h1>Log In</h1>
+  <%- include('shared/layout') %>
 
-  <% if (error) { %>
-    <p style="color: red;"><%= error %></p>
-  <% } %>
-
-  <form action="/login" method="POST">
-    <div>
-      <label for="username">Username</label>
-      <input type="text" id="username" name="username" required>
-    </div>
-    <div>
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" required>
-    </div>
-    <button type="submit">Log In</button>
-  </form>
-
-  <p>Don't have an account? <a href="/register">Register</a></p>
+  <main class="auth-wrapper">
+    <%- include('shared/login-form') %>
+  </main>
 </body>
 </html>

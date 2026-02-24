@@ -1,0 +1,24 @@
+<div class="auth-panel">
+  <h2>Welcome back</h2>
+
+  <% if (typeof error !== 'undefined' && error) { %>
+    <div class="error-msg"><%= error %></div>
+  <% } %>
+
+  <form action="/login" method="POST">
+    <div class="field">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" required>
+    </div>
+    <div class="field">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required>
+    </div>
+    <button type="submit" class="btn-primary">Log in</button>
+  </form>
+
+  <div class="auth-alt">
+    Don't have an account yet?
+    <a href="/register">Sign up</a>
+  </div>
+</div>
