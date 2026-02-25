@@ -6,7 +6,7 @@ const listFolders = async (_req, res) => {
 };
 
 const newFolderForm = (_req, res) => {
-  res.send("TODO: render new folder form");
+  res.render("new-folder");
 };
 
 const createFolder = (_req, res) => {

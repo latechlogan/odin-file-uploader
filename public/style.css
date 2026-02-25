@@ -185,7 +185,8 @@ hr {
 
 /* ─── Layout helpers ────────────────────────────────── */
 
-.auth-wrapper {
+.auth-wrapper,
+.create-wrapper {
   flex: 1;
   display: flex;
   align-items: center;
@@ -195,7 +196,8 @@ hr {
 
 /* ─── Auth panel (login / register forms) ───────────── */
 
-.auth-panel {
+.auth-panel,
+.create-panel {
   background: white;
   border: 1px solid #e5e5e5;
   border-radius: 8px;
@@ -204,7 +206,10 @@ hr {
   max-width: 400px;
 }
 
-.auth-panel h2 {
+.auth-panel h2,
+.auth-panel .title,
+.create-panel h2,
+.create-panel .title {
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1.5rem;

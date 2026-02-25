@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create folder - Drivebox</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <%- include('shared/layout')%>
+
+    <main class="create-wrapper">
+      <div class="create-panel">
+        <h2>New Folder</h2>
+        <form action="/folders/" method="post">
+          <div class="field">
+            <label for="folder-name">Folder Name</label>
+            <input
+              type="text"
+              name="folderName"
+              id="folder-name"
+              placeholder="Untitled"
+            />
+          </div>
+          <button type="submit" class="btn-primary">Create</button>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>
