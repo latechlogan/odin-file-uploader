@@ -9,25 +9,27 @@
 <body>
   <%- include('shared/layout') %>
 
-  <% if (user) { %>
-    <main style="padding: 2rem;">
-      <p>Welcome back, <%= user.username %></p>
-      <ul>
-        <% files.forEach(file => { %>
-          <li><%= file.name %> (<%= file.mimeType %>, <%= file.size %> bytes)</li>
-        <% }) %>
-      </ul>
+  <main>
+    <% if (user) { %>
+      <main style="padding: 2rem;">
+        <p>Welcome back, <%= user.username %></p>
+        <ul>
+          <% files.forEach(file => { %>
+            <li><%= file.name %> (<%= file.mimeType %>, <%= file.size %> bytes)</li>
+          <% }) %>
+        </ul>
 
-      <ul>
-        <% folders.forEach(folder => { %>
-          <li><%= folder.name %></li>
-        <% }) %>
-      </ul>
-    </main>
-  <% } else { %>
-    <main class="auth-wrapper">
-      <%- include('shared/login-form') %>
-    </main>
-  <% } %>
+        <ul>
+          <% folders.forEach(folder => { %>
+            <li><%= folder.name %></li>
+          <% }) %>
+        </ul>
+      </main>
+    <% } else { %>
+      <main class="auth-wrapper">
+        <%- include('shared/login-form') %>
+      </main>
+    <% } %>
+  </main>
 </body>
 </html>
