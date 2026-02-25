@@ -38,6 +38,13 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use((req, res, next) => {
+  res.locals.user = req.user || null;
+  res.locals.search = req.query.search || "";
+  res.locals.type = req.query.type || "all";
+  next();
+});
+
 app.use("/", authRouter);
 app.use("/", indexRouter);
 app.use("/folders", foldersRouter);
