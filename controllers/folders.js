@@ -1,5 +1,8 @@
-const listFolders = (_req, res) => {
-  res.send("TODO: list all folders");
+import { prisma } from "../lib/prisma.js";
+
+const listFolders = async (_req, res) => {
+  const folders = await prisma.folder.findMany();
+  res.render("folders", { folders });
 };
 
 const newFolderForm = (_req, res) => {
