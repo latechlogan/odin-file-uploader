@@ -1,0 +1,59 @@
+<header class="site-header">
+  <div class="site-logo-container">
+    <a href="/">Drivebox</a>
+  </div>
+
+  <search class="search">
+      <form action="/" method="GET" class="search-form">
+        <input type="search" name="search" value="<%= search %>" placeholder="Search..." class="searchbar" />
+        <button type="submit" class="search-submit">Search</button>
+        
+        <fieldset class="search-filters">
+          <input type="radio" name="type" value="all" id="option1" <%= type === 'all' ? 'checked' : '' %> />
+          <label for="option1">All</label>
+
+          <input type="radio" name="type" value="folders" id="option2" <%= type === 'folders' ? 'checked' : '' %> />
+          <label for="option2">Folders</label>
+          
+          <input type="radio" name="type" value="files" id="option3" <%= type === 'files' ? 'checked' : '' %> />
+          <label for="option3">Files</label>
+        </fieldset>
+      </form>
+  </search>
+
+  <span class="account-section">
+    <% if (user) { %>
+      <button class="account-menu-toggle">My Account</button>
+    
+      <span class="account-menu hidden">
+        <span class="account-menu-greeting">Hi, <%= user.username %>!</span>
+        <small class="account-menu-detail"><%= user.email %></small>
+        <hr>
+        <button>Settings</button>
+        <button>Manage Account</button>
+        <button>Theme</button>
+        <hr>
+        <form action="/logout" method="post">
+          <button type="submit">Logout</button>
+        </form>
+      </span>
+    <% } %>
+  </span>
+</header>
+
+<script>
+  let showAccountMenu = false;
+
+  const toggle = document.querySelector(".account-menu-toggle")
+  const menu = document.querySelector(".account-menu")
+
+  toggle?.addEventListener('click', () => {
+    showAccountMenu = !showAccountMenu
+
+    if (showAccountMenu) {
+      menu.classList.remove('hidden')
+    } else {
+      menu.classList.add('hidden')
+    }
+  })
+</script>
