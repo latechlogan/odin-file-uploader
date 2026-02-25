@@ -9,8 +9,15 @@ const newFolderForm = (_req, res) => {
   res.render("new-folder");
 };
 
-const createFolder = (_req, res) => {
-  res.send("TODO: create a folder");
+const createFolder = async (req, res) => {
+  const { folderName } = req.body;
+  await prisma.folder.create({
+    data: {
+      name: folderName,
+      userId: req.user.id,
+    },
+  });
+  res.redirect("/folders");
 };
 
 const showFolder = (_req, res) => {
