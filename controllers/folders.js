@@ -20,8 +20,14 @@ const createFolder = async (req, res) => {
   res.redirect("/folders");
 };
 
-const showFolder = (_req, res) => {
-  res.send("TODO: show folder contents");
+const showFolder = async (req, res) => {
+  const folderId = parseInt(req.params.id);
+  const folder = await prisma.folder.findUnique({
+    where: {
+      id: folderId,
+    },
+  });
+  res.render("folder-detail", { folder });
 };
 
 const editFolderForm = (_req, res) => {

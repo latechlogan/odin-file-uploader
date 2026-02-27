@@ -13,15 +13,18 @@
     <% if (user) { %>
       <main style="padding: 2rem;">
         <p>Welcome back, <%= user.username %></p>
+
+        <h2>Files</h2>
         <ul>
           <% files.forEach(file => { %>
             <li><%= file.name %> (<%= file.mimeType %>, <%= file.size %> bytes)</li>
           <% }) %>
         </ul>
 
+        <h2>Folders</h2>
         <ul>
           <% folders.forEach(folder => { %>
-            <li><%= folder.name %></li>
+            <a href="/folders/<%= folder.id %>"}><%= folder.name %></li>
           <% }) %>
         </ul>
       </main>
