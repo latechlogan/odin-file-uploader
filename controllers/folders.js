@@ -1,7 +1,9 @@
 import { prisma } from "../lib/prisma.js";
 
 const listFolders = async (_req, res) => {
-  const folders = await prisma.folder.findMany();
+  const folders = await prisma.folder.findMany({
+    orderBy: { createdAt: "asc" },
+  });
   res.render("folders", { folders });
 };
 
@@ -30,12 +32,24 @@ const showFolder = async (req, res) => {
   res.render("folder-detail", { folder });
 };
 
-const editFolderForm = (_req, res) => {
-  res.send("TODO: render edit folder form");
+const editFolderForm = async (req, res) => {
+  const folderId = parseInt(req.params.id);
+  const folder = await prisma.folder.findUnique({
+    where: {
+      id: folderId,
+    },
+  });
+  res.render("edit-folder", { folder });
 };
 
-const updateFolder = (_req, res) => {
-  res.send("TODO: rename a folder");
+const updateFolder = async (req, res) => {
+  const folderId = parseInt(req.params.id);
+  const { folderName } = req.body;
+  await prisma.folder.update({
+    where: { id: folderId },
+    data: { name: folderName },
+  });
+  res.redirect(`/folders/${folderId}`);
 };
 
 const deleteFolder = (_req, res) => {
