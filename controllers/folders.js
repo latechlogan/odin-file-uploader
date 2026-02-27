@@ -52,8 +52,12 @@ const updateFolder = async (req, res) => {
   res.redirect(`/folders/${folderId}`);
 };
 
-const deleteFolder = (_req, res) => {
-  res.send("TODO: delete a folder");
+const deleteFolder = async (req, res) => {
+  const folderId = parseInt(req.params.id);
+  const deleted = await prisma.folder.delete({
+    where: { id: folderId },
+  });
+  res.redirect("/folders");
 };
 
 export default {
