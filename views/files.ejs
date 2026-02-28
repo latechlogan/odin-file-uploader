@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Files - Drivebox</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <%- include('shared/layout')%>
+
+    <main>
+      <ul>
+        <% files.forEach(file => { %>
+          <li><%= file.name %></li>
+        <% }) %>
+      </ul>
+    </main>
+  </body>
+</html>

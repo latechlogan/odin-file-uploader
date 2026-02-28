@@ -1,5 +1,10 @@
-const listFiles = (_req, res) => {
-  res.send("TODO: list all files");
+import { prisma } from "../lib/prisma.js";
+
+const listFiles = async (req, res) => {
+  const files = await prisma.file.findMany({
+    where: { userId: req.user.id },
+  });
+  res.render("files", { files: files });
 };
 
 const uploadFile = (_req, res) => {
