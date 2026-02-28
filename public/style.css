@@ -340,3 +340,37 @@ input:focus {
   text-decoration: none;
   cursor: pointer;
 }
+
+/* ----- folder detail view ----- */
+
+.folder-detail {
+  padding: 2rem;
+}
+
+.folder-detail__header {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: baseline;
+}
+
+.folder-detail__title {
+  font-size: 1.2rem;
+  margin-right: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.folder-detail__button {
+  font-size: 0.8rem;
+  color: inherit;
+  display: inline-block;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  border-radius: 1rem;
+  text-decoration: none;
+  text-decoration: underline;
+  cursor: pointer;
+}
