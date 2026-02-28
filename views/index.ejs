@@ -12,21 +12,31 @@
   <main>
     <% if (user) { %>
       <main style="padding: 2rem;">
-        <p>Welcome back, <%= user.username %></p>
+        <!-- <p class="greeting">Welcome back, <%= user.username %></p> -->
 
-        <h2>Files</h2>
-        <ul>
-          <% files.forEach(file => { %>
-            <li><%= file.name %> (<%= file.mimeType %>, <%= file.size %> bytes)</li>
-          <% }) %>
-        </ul>
+        <section class="files">
+          <h2 class="files-heading">Files</h2>
+          <ul class="files-grid">
+            <% files.forEach(file => { %>
+              <a href="" class="file-elements">
+                <img src="/images/save.png" alt="" class="file-icon">
+                <span class="file-name"><%= file.name %> (<%= file.mimeType %>, <%= file.size %> bytes)</span>
+              </a>
+            <% }) %>
+          </ul>
+        </section>
 
-        <h2>Folders</h2>
-        <ul>
-          <% folders.forEach(folder => { %>
-            <a href="/folders/<%= folder.id %>"}><%= folder.name %></li>
-          <% }) %>
-        </ul>
+        <section class="folders">
+          <h2 class="folders-heading">Folders</h2>
+          <ul class="folders-grid">
+            <% folders.forEach(folder => { %>
+              <a href="/folders/<%= folder.id %>"} class="folder-elements">
+                <img src="/images/folder.png" alt="" class="folder-icon">
+                <span class="folder-name"><%= folder.name %></span>
+              </li>
+            <% }) %>
+          </ul>
+        </section>
       </main>
     <% } else { %>
       <main class="content-card-wrapper">

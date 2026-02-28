@@ -290,3 +290,53 @@ input:focus {
   background: #f5f5f5;
   border-color: #999;
 }
+
+.greeting {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.files,
+.folders {
+  margin: 0 auto 3rem auto;
+}
+
+.files-heading,
+.folders-heading {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.files-grid,
+.folders-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 2fr));
+  gap: 1rem;
+}
+
+.file-elements,
+.folder-elements {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.file-icon,
+.folder-icon {
+  width: 4rem;
+  height: auto;
+  margin-bottom: 0.5rem;
+  object-fit: contain;
+  object-position: center;
+}
+
+.file-name,
+.folder-name {
+  font-size: 0.9rem;
+  text-align: center;
+  text-wrap: pretty;
+  text-decoration: none;
+  cursor: pointer;
+}
