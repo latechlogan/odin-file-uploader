@@ -1,7 +1,8 @@
 import { prisma } from "../lib/prisma.js";
 
-const listFolders = async (_req, res) => {
+const listFolders = async (req, res) => {
   const folders = await prisma.folder.findMany({
+    where: { userId: req.user.id },
     orderBy: { createdAt: "asc" },
   });
   res.render("folders", { folders });
