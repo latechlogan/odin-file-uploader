@@ -45,8 +45,12 @@ const uploadFile = async (req, res) => {
   res.redirect("/");
 };
 
-const showFile = (_req, res) => {
-  res.send("TODO: show file details");
+const showFile = async (req, res) => {
+  const fileId = parseInt(req.params.id);
+  const file = await prisma.file.findUnique({
+    where: { id: fileId },
+  });
+  res.render("file-detail", { file: file });
 };
 
 const deleteFile = (_req, res) => {
