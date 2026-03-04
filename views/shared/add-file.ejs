@@ -1,0 +1,7 @@
+<form action="/files/upload" method="post" enctype="multipart/form-data">
+    <% if (typeof folder !== 'undefined') { %>
+        <input type="hidden" name="folderId" value="<%= folder.id %>" />
+    <% } %>
+    <input type="file" name="file" />
+    <button type="submit">Upload a File</button>
+</form>

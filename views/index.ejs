@@ -13,13 +13,7 @@
     <% if (user) { %>
       <main style="padding: 2rem;">
         <!-- <p class="greeting">Welcome back, <%= user.username %></p> -->
-         <form action="/files/upload" method="post" enctype="multipart/form-data">
-          <% if (typeof currentFolder !== 'undefined') { %>
-            <input type="hidden" name="folderId" value="<%= currentFolder.id %>" />
-          <% } %>
-          <input type="file" name="file" />
-          <button type="submit">Upload a File</button>
-         </form>
+        <%- include('shared/add-file') %>
 
         <section class="files">
           <h2 class="files-heading">Files</h2>
