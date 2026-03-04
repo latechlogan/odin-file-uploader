@@ -12,14 +12,22 @@
     <main class="folder-detail">
       <div class="folder-detail__header">
         <h2 class="folder-detail__title"><%= folder.name %></h2>
-        <a href="/folders/<%= folder.id %>/edit" class="folder-detail__button">Edit Folder</a>
+        <a href="/folders/<%= folder.id %>/edit" class="folder-detail__button">Rename Folder</a>
         <form action="/folders/<%= folder.id %>/delete" method="post" onsubmit="return confirm('Are you sure you want to delete the folder: <%= folder.name %>?');">
           <button type="submit" class="folder-detail__button">Delete Folder</button>
         </form>
       </div>
-      <% if (!folder.files) { %>
+      <% if (!files) { %>
         <p>No items in this folder.</p>
+      <% } else { %>
+        <% files.forEach(file => { %>
+          <a href="/files/<%= file.id %>" class="file-elements">
+            <img src="/images/save.png" alt="" class="file-icon">
+            <span class="file-name"><%= file.name %> (<%= file.mimeType %>, <%= file.size %> bytes)</span>
+          </a>
+        <% }) %>
       <% } %>
+      <%- include('shared/add-file') %>
     </main>
   </body>
 </html>

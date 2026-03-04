@@ -30,8 +30,9 @@ const showFolder = async (req, res) => {
       id: folderId,
       userId: req.user.id,
     },
+    include: { files: true },
   });
-  res.render("folder-detail", { folder });
+  res.render("folder-detail", { folder, files: folder.files });
 };
 
 const editFolderForm = async (req, res) => {
