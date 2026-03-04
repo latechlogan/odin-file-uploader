@@ -25,7 +25,7 @@
           <h2 class="files-heading">Files</h2>
           <ul class="files-grid">
             <% files.forEach(file => { %>
-              <a href="" class="file-elements">
+              <a href="/files/<%= file.id %>" class="file-elements">
                 <img src="/images/save.png" alt="" class="file-icon">
                 <span class="file-name"><%= file.name %> (<%= file.mimeType %>, <%= file.size %> bytes)</span>
               </a>
