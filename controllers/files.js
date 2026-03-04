@@ -26,6 +26,7 @@ const uploadFile = async (req, res) => {
   }
 
   // 2. Save metadata + storage path to database
+  const folderId = req.body.folderId ? parseInt(req.body.folderId) : null;
   await prisma.file.create({
     data: {
       name: file.originalname,
@@ -33,11 +34,11 @@ const uploadFile = async (req, res) => {
       mimeType: file.mimetype,
       path: data.path,
       userId: req.user.id,
-      folderId: req.body.folderId ? parseInt(req.body.folderId) : null,
+      folderId,
     },
   });
 
-  res.redirect("/");
+  res.redirect(folderId ? `/folders/${folderId}` : "/");
 };
 
 const showFile = async (req, res) => {
@@ -63,11 +64,12 @@ const deleteFile = async (req, res) => {
     return res.redirect("back");
   }
 
+  const { folderId } = targetFile;
   await prisma.file.delete({
     where: { id: fileId, userId: req.user.id },
   });
 
-  res.redirect("/files");
+  res.redirect(folderId ? `/folders/${folderId}` : "/");
 };
 
 export default { listFiles, uploadFile, showFile, deleteFile };
