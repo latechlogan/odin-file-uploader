@@ -3,7 +3,7 @@ import { prisma } from "../lib/prisma.js";
 const homepage = async (req, res) => {
   if (req.user) {
     const files = await prisma.file.findMany({
-      where: { userId: req.user.id },
+      where: { userId: req.user.id, folderId: null },
     });
     const folders = await prisma.folder.findMany({
       where: { userId: req.user.id },
