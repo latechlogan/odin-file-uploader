@@ -43,7 +43,7 @@ const uploadFile = async (req, res) => {
 const showFile = async (req, res) => {
   const fileId = parseInt(req.params.id);
   const file = await prisma.file.findUnique({
-    where: { id: fileId },
+    where: { id: fileId, userId: req.user.id },
   });
   res.render("file-detail", { file: file });
 };
@@ -51,7 +51,7 @@ const showFile = async (req, res) => {
 const deleteFile = async (req, res) => {
   const fileId = parseInt(req.params.id);
   const targetFile = await prisma.file.findUnique({
-    where: { id: fileId },
+    where: { id: fileId, userId: req.user.id },
   });
 
   const { data, error } = await supabase.storage
@@ -64,7 +64,7 @@ const deleteFile = async (req, res) => {
   }
 
   await prisma.file.delete({
-    where: { id: fileId },
+    where: { id: fileId, userId: req.user.id },
   });
 
   res.redirect("/files");

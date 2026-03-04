@@ -28,6 +28,7 @@ const showFolder = async (req, res) => {
   const folder = await prisma.folder.findUnique({
     where: {
       id: folderId,
+      userId: req.user.id,
     },
   });
   res.render("folder-detail", { folder });
@@ -38,6 +39,7 @@ const editFolderForm = async (req, res) => {
   const folder = await prisma.folder.findUnique({
     where: {
       id: folderId,
+      userId: req.user.id,
     },
   });
   res.render("edit-folder", { folder });
@@ -47,7 +49,7 @@ const updateFolder = async (req, res) => {
   const folderId = parseInt(req.params.id);
   const { folderName } = req.body;
   await prisma.folder.update({
-    where: { id: folderId },
+    where: { id: folderId, userId: req.user.id },
     data: { name: folderName },
   });
   res.redirect(`/folders/${folderId}`);
@@ -56,7 +58,7 @@ const updateFolder = async (req, res) => {
 const deleteFolder = async (req, res) => {
   const folderId = parseInt(req.params.id);
   const deleted = await prisma.folder.delete({
-    where: { id: folderId },
+    where: { id: folderId, userId: req.user.id },
   });
   res.redirect("/folders");
 };
