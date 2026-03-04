@@ -25,18 +25,13 @@ const uploadFile = async (req, res) => {
     return res.redirect("back");
   }
 
-  // 2. Get the public URL
-  const {
-    data: { publicUrl },
-  } = supabase.storage.from("uploads").getPublicUrl(data.path);
-
-  // 3. Save metadata + URL to database
+  // 2. Save metadata + storage path to database
   await prisma.file.create({
     data: {
       name: file.originalname,
       size: file.size,
       mimeType: file.mimetype,
-      url: publicUrl,
+      path: data.path,
       userId: req.user.id,
       folderId: req.body.folderId ? parseInt(req.body.folderId) : null,
     },
@@ -53,8 +48,26 @@ const showFile = async (req, res) => {
   res.render("file-detail", { file: file });
 };
 
-const deleteFile = (_req, res) => {
-  res.send("TODO: delete a file");
+const deleteFile = async (req, res) => {
+  const fileId = parseInt(req.params.id);
+  const targetFile = await prisma.file.findUnique({
+    where: { id: fileId },
+  });
+
+  const { data, error } = await supabase.storage
+    .from("uploads")
+    .remove([`${targetFile.path}`]);
+
+  if (error) {
+    console.error(error);
+    return res.redirect("back");
+  }
+
+  await prisma.file.delete({
+    where: { id: fileId },
+  });
+
+  res.redirect("/files");
 };
 
 export default { listFiles, uploadFile, showFile, deleteFile };

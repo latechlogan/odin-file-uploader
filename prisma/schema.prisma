@@ -46,7 +46,7 @@ model File {
   name       String
   size       Int
   mimeType   String
-  url        String
+  path       String
   uploadedAt DateTime @default(now())
   userId     Int
   folderId   Int?
