@@ -3,30 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Drivebox</title>
+    <title><%= file.name %> - Drivebox</title>
+    <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <h2><%= file.name %></h2>
-    <ul>
-      <li><strong>Name:</strong> <%= file.name %></li>
-      <li><strong>Type:</strong> <%= file.mimeType %></li>
-      <li><strong>Size:</strong> <%= (file.size / 1024).toFixed(2) %> KB</li>
-      <li>
-        <strong>Uploaded:</strong> <%= new
-        Date(file.uploadedAt).toLocaleString() %>
-      </li>
-    </ul>
-    <a href="/files/<%= file.id %>/download">Download</a>
-    <form
-      action="/files/<%= file.id %>/delete"
-      method="post"
-      onsubmit="
-        return confirm(
-          'Are you sure you want to delete the file: <%= file.name %>?',
-        );
-      "
-    >
-      <button type="submit" class="folder-detail__button">Delete File</button>
-    </form>
+    <%- include('shared/layout')%>
+
+    <main style="padding: 2rem">
+      <h2><%= file.name %></h2>
+      <ul>
+        <li><strong>Name:</strong> <%= file.name %></li>
+        <li><strong>Type:</strong> <%= file.mimeType %></li>
+        <li><strong>Size:</strong> <%= (file.size / 1024).toFixed(2) %> KB</li>
+        <li>
+          <strong>Uploaded:</strong> <%= new
+          Date(file.uploadedAt).toLocaleString() %>
+        </li>
+      </ul>
+      <a href="/files/<%= file.id %>/download">Download</a>
+      <form
+        action="/files/<%= file.id %>/delete"
+        method="post"
+        onsubmit="
+          return confirm(
+            'Are you sure you want to delete the file: <%= file.name %>?',
+          );
+        "
+      >
+        <button type="submit" class="folder-detail__button">Delete File</button>
+      </form>
+    </main>
   </body>
 </html>
