@@ -33,12 +33,13 @@
 
       <section class="folders">
         <h2 class="folders-heading">Folders</h2>
+        <a href="/folders/new">New Folder</a>
         <ul class="folders-grid">
           <% folders.forEach(folder => { %>
-            <a href="/folders/<%= folder.id %>"} class="folder-elements">
+            <a href="/folders/<%= folder.id %>" class="folder-elements">
               <img src="/images/folder.png" alt="" class="folder-icon">
               <span class="folder-name"><%= folder.name %></span>
-            </li>
+            </a>
           <% }) %>
         </ul>
       </section>
