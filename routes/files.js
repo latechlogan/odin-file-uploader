@@ -13,6 +13,7 @@ router.post(
   filesController.uploadFile,
 );
 router.get("/:id", isAuthenticated, filesController.showFile);
+router.get("/:id/download", isAuthenticated, filesController.downloadFile);
 router.post("/:id/delete", isAuthenticated, filesController.deleteFile);
 
 export default router;

@@ -1,5 +1,6 @@
 import { prisma } from "../lib/prisma.js";
 import { supabase } from "../lib/supabase.js";
+import path from "path";
 
 const listFiles = async (req, res) => {
   const files = await prisma.file.findMany({
@@ -49,6 +50,28 @@ const showFile = async (req, res) => {
   res.render("file-detail", { file: file });
 };
 
+const downloadFile = async (req, res) => {
+  const fileId = parseInt(req.params.id);
+  const file = await prisma.file.findUnique({
+    where: { id: fileId },
+  });
+
+  // const fileUrl = `${process.env.SUPABASE_URL}/storage/v1/object/public/uploads/${file.path}`;
+  // res.redirect(fileUrl);
+
+  const { data, error } = await supabase.storage
+    .from("uploads")
+    .download(file.path);
+
+  if (error) return res.redirect("back");
+
+  const buffer = Buffer.from(await data.arrayBuffer());
+
+  res.setHeader("Content-Disposition", `attachment; filename="${file.name}"`);
+  res.setHeader("Content-Type", file.mimeType);
+  res.send(buffer);
+};
+
 const deleteFile = async (req, res) => {
   const fileId = parseInt(req.params.id);
   const targetFile = await prisma.file.findUnique({
@@ -72,4 +95,4 @@ const deleteFile = async (req, res) => {
   res.redirect(folderId ? `/folders/${folderId}` : "/");
 };
 
-export default { listFiles, uploadFile, showFile, deleteFile };
+export default { listFiles, uploadFile, showFile, downloadFile, deleteFile };
