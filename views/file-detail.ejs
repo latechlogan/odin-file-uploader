@@ -20,6 +20,11 @@
           Date(file.uploadedAt).toLocaleString() %>
         </li>
       </ul>
+      <% if (file.mimeType && file.mimeType.startsWith('image/')) { %>
+        <img src="<%= supabaseUrl %>/storage/v1/object/public/uploads/<%= file.path %>" alt="<%= file.name %>" style="max-width: 100%; max-height: 500px; display: block; margin-bottom: 1rem;" />
+      <% } else { %>
+        <img src="/images/save.png" alt="File icon" style="width: 80px; height: 80px; display: block; margin-bottom: 1rem;" />
+      <% } %>
       <a href="/files/<%= file.id %>/download">Download</a>
       <form
         action="/files/<%= file.id %>/delete"

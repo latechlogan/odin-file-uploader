@@ -47,7 +47,7 @@ const showFile = async (req, res) => {
   const file = await prisma.file.findUnique({
     where: { id: fileId, userId: req.user.id },
   });
-  res.render("file-detail", { file: file });
+  res.render("file-detail", { file: file, supabaseUrl: process.env.SUPABASE_URL });
 };
 
 const downloadFile = async (req, res) => {
