@@ -1,4 +1,5 @@
 import { prisma } from "../lib/prisma.js";
+import { supabase } from "../lib/supabase.js";
 
 const listFolders = async (req, res) => {
   const folders = await prisma.folder.findMany({
@@ -62,7 +63,18 @@ const updateFolder = async (req, res) => {
 
 const deleteFolder = async (req, res) => {
   const folderId = parseInt(req.params.id);
-  const deleted = await prisma.folder.delete({
+  const files = await prisma.file.findMany({
+    where: {
+      folderId,
+      userId: req.user.id,
+    },
+  });
+
+  await Promise.all(
+    files.map((file) => supabase.storage.from("uploads").remove([file.path])),
+  );
+
+  await prisma.folder.delete({
     where: { id: folderId, userId: req.user.id },
   });
   res.redirect("/folders");
