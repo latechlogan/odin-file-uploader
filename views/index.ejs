@@ -14,6 +14,11 @@
       <!-- <p class="greeting">Welcome back, <%= user.username %></p> -->
       <%- include('shared/add-file') %>
 
+      <% if (search) { %>
+        <p>Showing results for "<%= search %>"</p>
+        <a href="<%= currentPath %>">Clear</a>
+      <% } %>
+
       <section class="files">
         <h2 class="files-heading">Files</h2>
         <ul class="files-grid">

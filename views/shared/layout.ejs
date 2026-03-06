@@ -4,20 +4,9 @@
   </div>
 
   <search class="search">
-      <form action="/" method="GET" class="search-form">
-        <input type="search" name="search" value="<%= search %>" placeholder="Search..." class="searchbar" />
+      <form action="<%= currentPath %>" method="GET" class="search-form">
+        <input type="search" name="search" placeholder="Search..." class="searchbar" />
         <button type="submit" class="search-submit">Search</button>
-        
-        <fieldset class="search-filters">
-          <input type="radio" name="type" value="all" id="option1" <%= type === 'all' ? 'checked' : '' %> />
-          <label for="option1">All</label>
-
-          <input type="radio" name="type" value="folders" id="option2" <%= type === 'folders' ? 'checked' : '' %> />
-          <label for="option2">Folders</label>
-          
-          <input type="radio" name="type" value="files" id="option3" <%= type === 'files' ? 'checked' : '' %> />
-          <label for="option3">Files</label>
-        </fieldset>
       </form>
   </search>
 

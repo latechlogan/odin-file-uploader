@@ -40,8 +40,7 @@ app.use(passport.session());
 
 app.use((req, res, next) => {
   res.locals.user = req.user || null;
-  res.locals.search = req.query.search || "";
-  res.locals.type = req.query.type || "all";
+  res.locals.currentPath = req.path;
   next();
 });
 

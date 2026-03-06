@@ -17,6 +17,10 @@
           <button type="submit" class="folder-detail__button">Delete Folder</button>
         </form>
       </div>
+      <% if (search) { %>
+        <p>Showing results for "<%= search %>"</p>
+        <a href="<%= currentPath %>">Clear</a>
+      <% } %>
       <% if (!files) { %>
         <p>No items in this folder.</p>
       <% } else { %>

@@ -2,16 +2,20 @@ import { prisma } from "../lib/prisma.js";
 
 const homepage = async (req, res) => {
   if (req.user) {
+    const search = req.query.search || "";
+    const nameFilter = search
+      ? { contains: search, mode: "insensitive" }
+      : undefined;
     const files = await prisma.file.findMany({
-      where: { userId: req.user.id, folderId: null },
+      where: { userId: req.user.id, folderId: null, ...(nameFilter && { name: nameFilter }) },
     });
     const folders = await prisma.folder.findMany({
-      where: { userId: req.user.id },
+      where: { userId: req.user.id, ...(nameFilter && { name: nameFilter }) },
       orderBy: { createdAt: "asc" },
     });
-    res.render("index", { files, folders });
+    res.render("index", { files, folders, search });
   } else {
-    res.render("index", { files: [], folders: [] });
+    res.render("index", { files: [], folders: [], search: "" });
   }
 };
 
