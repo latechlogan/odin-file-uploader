@@ -24,7 +24,7 @@
             <% files.forEach(file => { %>
               <a href="/files/<%= file.id %>" class="file-elements">
                 <img src="/images/save.png" alt="" class="file-icon">
-                <span class="file-name"><%= file.name %> (<%= file.mimeType %>, <%= file.size %> bytes)</span>
+                <span class="file-name"><%= file.name %></span>
               </a>
             <% }) %>
           </ul>
