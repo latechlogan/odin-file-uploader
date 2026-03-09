@@ -534,6 +534,11 @@ input:focus {
   gap: 1rem;
 }
 
+.files-grid li,
+.folders-grid li {
+  list-style-type: none;
+}
+
 @media screen and (min-width: 600px) {
   .files-grid,
   .folders-grid {

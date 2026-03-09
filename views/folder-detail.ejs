@@ -24,12 +24,18 @@
       <% if (!files) { %>
         <p>No items in this folder.</p>
       <% } else { %>
-        <% files.forEach(file => { %>
-          <a href="/files/<%= file.id %>" class="file-elements">
-            <img src="/images/save.png" alt="" class="file-icon">
-            <span class="file-name"><%= file.name %> (<%= file.mimeType %>, <%= file.size %> bytes)</span>
-          </a>
-        <% }) %>
+        <section class="files">
+          <ul class="files-grid">
+            <% files.forEach(file => { %>
+              <li>
+                <a href="/files/<%= file.id %>" class="file-elements">
+                  <img src="/images/save.png" alt="" class="file-icon">
+                  <span class="file-name"><%= file.name %> (<%= file.mimeType %>, <%= file.size %> bytes)</span>
+                </a>
+              </li>
+            <% }) %>
+          </ul>
+        </section>
       <% } %>
     </main>
     <%- include('shared/footer') %>

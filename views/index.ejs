@@ -34,15 +34,19 @@
             <ul class="files-grid">
               <% combined.forEach(item => { %>
                 <% if (item.type === 'file') { %>
-                  <a href="/files/<%= item.id %>" class="file-elements">
-                    <img src="/images/save.png" alt="" class="file-icon">
-                    <span class="file-name"><%= item.name %></span>
-                  </a>
+                  <li>
+                    <a href="/files/<%= item.id %>" class="file-elements">
+                      <img src="/images/save.png" alt="" class="file-icon">
+                      <span class="file-name"><%= item.name %></span>
+                    </a>
+                  </li>
                 <% } else { %>
-                  <a href="/folders/<%= item.id %>" class="folder-elements">
-                    <img src="/images/folder.png" alt="" class="folder-icon">
-                    <span class="folder-name"><%= item.name %></span>
-                  </a>
+                  <li>
+                    <a href="/folders/<%= item.id %>" class="folder-elements">
+                      <img src="/images/folder.png" alt="" class="folder-icon">
+                      <span class="folder-name"><%= item.name %></span>
+                    </a>
+                  </li>
                 <% } %>
               <% }) %>
             </ul>
@@ -55,10 +59,12 @@
             <h2 class="files-heading">Files</h2>
             <ul class="files-grid">
               <% files.forEach(file => { %>
-                <a href="/files/<%= file.id %>" class="file-elements">
-                  <img src="/images/save.png" alt="" class="file-icon">
-                  <span class="file-name"><%= file.name %></span>
-                </a>
+                <li>
+                  <a href="/files/<%= file.id %>" class="file-elements">
+                    <img src="/images/save.png" alt="" class="file-icon">
+                    <span class="file-name"><%= file.name %></span>
+                  </a>
+                </li>
               <% }) %>
             </ul>
           </section>
@@ -69,10 +75,12 @@
             <h2 class="folders-heading">Folders</h2>
             <ul class="folders-grid">
               <% folders.forEach(folder => { %>
-                <a href="/folders/<%= folder.id %>" class="folder-elements">
-                  <img src="/images/folder.png" alt="" class="folder-icon">
-                  <span class="folder-name"><%= folder.name %></span>
-                </a>
+                <li>
+                  <a href="/folders/<%= folder.id %>" class="folder-elements">
+                    <img src="/images/folder.png" alt="" class="folder-icon">
+                    <span class="folder-name"><%= folder.name %></span>
+                  </a>
+                </li>
               <% }) %>
             </ul>
           </section>
