@@ -12,11 +12,11 @@
     <main class="file-detail-wrapper">
       <div>
         <ul>
-          <li><strong>Name:</strong> <%= file.name %></li>
-          <li><strong>Type:</strong> <%= file.mimeType %></li>
-          <li><strong>Size:</strong> <%= (file.size / 1024).toFixed(2) %> KB</li>
+          <li><span>Name</span> <%= file.name %></li>
+          <li><span>Type</span> <%= file.mimeType %></li>
+          <li><span>Size</span> <%= (file.size / 1024).toFixed(2) %> KB</li>
           <li>
-            <strong>Uploaded:</strong> <%= new
+            <span>Added</span> <%= new
             Date(file.uploadedAt).toLocaleString() %>
           </li>
         </ul>
