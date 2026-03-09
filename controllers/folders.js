@@ -27,6 +27,7 @@ const createFolder = async (req, res) => {
 const showFolder = async (req, res) => {
   const folderId = parseInt(req.params.id);
   const search = req.query.search || "";
+  const error = req.query.error || null;
   const folder = await prisma.folder.findUnique({
     where: { id: folderId, userId: req.user.id },
   });
@@ -37,7 +38,7 @@ const showFolder = async (req, res) => {
       ...(search && { name: { contains: search, mode: "insensitive" } }),
     },
   });
-  res.render("folder-detail", { folder, files, search });
+  res.render("folder-detail", { folder, files, search, error });
 };
 
 const editFolderForm = async (req, res) => {

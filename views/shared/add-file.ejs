@@ -1,3 +1,6 @@
+<% if (error) { %>
+  <p style="color: red;"><%= error %></p>
+<% } %>
 <form action="/files/upload" method="post" enctype="multipart/form-data">
     <% if (typeof folder !== 'undefined') { %>
         <input type="hidden" name="folderId" value="<%= folder.id %>" />

@@ -13,9 +13,10 @@ const homepage = async (req, res) => {
       where: { userId: req.user.id, ...(nameFilter && { name: nameFilter }) },
       orderBy: { createdAt: "asc" },
     });
-    res.render("index", { files, folders, search });
+    const error = req.query.error || null;
+    res.render("index", { files, folders, search, error });
   } else {
-    res.render("index", { files: [], folders: [], search: "" });
+    res.render("index", { files: [], folders: [], search: "", error: null });
   }
 };
 
