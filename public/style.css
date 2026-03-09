@@ -224,7 +224,7 @@ hr {
 /* ─── Submenu ──────────────────────────────────── */
 
 .layout-submenu {
-  padding: 2rem;
+  padding: 2rem 2rem 0 2rem;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -479,8 +479,9 @@ input:focus {
 
 .files-heading,
 .folders-heading {
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin-bottom: 2rem;
+  font-weight: 600;
 }
 
 .files-grid,

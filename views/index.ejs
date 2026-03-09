@@ -17,29 +17,33 @@
         <a href="<%= currentPath %>">Clear</a>
       <% } %>
 
-      <section class="files">
-        <h2 class="files-heading">Files</h2>
-        <ul class="files-grid">
-          <% files.forEach(file => { %>
-            <a href="/files/<%= file.id %>" class="file-elements">
-              <img src="/images/save.png" alt="" class="file-icon">
-              <span class="file-name"><%= file.name %> (<%= file.mimeType %>, <%= file.size %> bytes)</span>
-            </a>
-          <% }) %>
-        </ul>
-      </section>
+      <% if (files.length > 0) { %>
+        <section class="files">
+          <h2 class="files-heading">Files</h2>
+          <ul class="files-grid">
+            <% files.forEach(file => { %>
+              <a href="/files/<%= file.id %>" class="file-elements">
+                <img src="/images/save.png" alt="" class="file-icon">
+                <span class="file-name"><%= file.name %> (<%= file.mimeType %>, <%= file.size %> bytes)</span>
+              </a>
+            <% }) %>
+          </ul>
+        </section>
+      <% } %>
 
-      <section class="folders">
-        <h2 class="folders-heading">Folders</h2>
-        <ul class="folders-grid">
-          <% folders.forEach(folder => { %>
-            <a href="/folders/<%= folder.id %>" class="folder-elements">
-              <img src="/images/folder.png" alt="" class="folder-icon">
-              <span class="folder-name"><%= folder.name %></span>
-            </a>
-          <% }) %>
-        </ul>
-      </section>
+      <% if (folders.length > 0) { %>
+        <section class="folders">
+          <h2 class="folders-heading">Folders</h2>
+          <ul class="folders-grid">
+            <% folders.forEach(folder => { %>
+              <a href="/folders/<%= folder.id %>" class="folder-elements">
+                <img src="/images/folder.png" alt="" class="folder-icon">
+                <span class="folder-name"><%= folder.name %></span>
+              </a>
+            <% }) %>
+          </ul>
+        </section>
+      <% } %>
     </main>
   <% } else { %>
     <main class="content-card-wrapper">
