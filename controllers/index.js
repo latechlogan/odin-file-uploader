@@ -12,10 +12,13 @@ const homepage = async (req, res) => {
         folderId: null,
         ...(nameFilter && { name: nameFilter }),
       },
+      orderBy: {
+        name: "asc",
+      },
     });
     const folders = await prisma.folder.findMany({
       where: { userId: req.user.id, ...(nameFilter && { name: nameFilter }) },
-      orderBy: { createdAt: "asc" },
+      orderBy: { name: "asc" },
     });
     const error = req.query.error || null;
     res.render("index", {
