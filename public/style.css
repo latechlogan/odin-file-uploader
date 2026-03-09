@@ -116,8 +116,8 @@ hr {
 }
 
 .btn-feather-icon {
-  width: 1rem;
-  stroke-width: 3px;
+  width: 1.2rem;
+  stroke-width: 2px;
 }
 
 /* ─── Layout helpers ────────────────────────────────── */
@@ -232,6 +232,14 @@ hr {
   align-items: center;
 }
 
+.layout-submenu__details {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 .layout-submenu__btns {
   display: flex;
   flex-direction: row;
@@ -297,6 +305,68 @@ hr {
 
 .account-menu button:hover {
   background: #eee;
+}
+
+/* ─── Folder menu ───────────────────────────────────── */
+
+.folder-menu-section {
+  position: relative;
+  margin-left: 0.75rem;
+}
+
+.folder-menu-toggle {
+  padding: 0.25rem 0.5rem;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.folder-menu-toggle:hover {
+  background: #eee;
+  border-color: #ddd;
+}
+
+.folder-menu {
+  position: absolute;
+  top: calc(100% + 0.25rem);
+  left: 0;
+  min-width: 180px;
+  padding: 0.5rem 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+
+.folder-menu.hidden {
+  display: none;
+}
+
+.folder-menu__item {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  text-align: left;
+  text-decoration: none;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 0;
+}
+
+.folder-menu__item:hover {
+  background: #eee;
+}
+
+.folder-menu__item--danger {
+  color: #b91c1c;
 }
 
 /* ─── Auth panel (login / register forms) ───────────── */

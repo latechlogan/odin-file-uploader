@@ -10,13 +10,13 @@
     <%- include('shared/layout')%>
 
     <main class="folder-detail">
-      <div class="folder-detail__header">
+      <!-- <div class="folder-detail__header">
         <h2 class="folder-detail__title"><%= folder.name %></h2>
         <a href="/folders/<%= folder.id %>/edit" class="folder-detail__button">Rename Folder</a>
         <form action="/folders/<%= folder.id %>/delete" method="post" onsubmit="return confirm('Are you sure you want to delete the folder: <%= folder.name %>?');">
           <button type="submit" class="folder-detail__button">Delete Folder</button>
         </form>
-      </div>
+      </div> -->
       <% if (search) { %>
         <p>Showing results for "<%= search %>"</p>
         <a href="<%= currentPath %>">Clear</a>
