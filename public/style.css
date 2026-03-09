@@ -125,6 +125,26 @@ hr {
   transition: all 200ms ease;
 }
 
+/* ─── Submenu ──────────────────────────────────── */
+
+.layout-submenu {
+  padding: 2rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.layout-submenu__btns {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
 /* ─── Account menu ──────────────────────────────────── */
 
 .account-section {
@@ -292,7 +312,7 @@ input:focus {
 }
 
 .greeting {
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: bold;
 }
 

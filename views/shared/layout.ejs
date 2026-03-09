@@ -30,6 +30,18 @@
   </span>
 </header>
 
+<div class="layout-submenu">
+  <% if (typeof folder !== 'undefined') { %>
+    <p class="greeting"><%= folder.name %></p>
+  <% } else { %>
+    <p class="greeting">All Files</p>
+  <% } %>
+  <div class="layout-submenu__btns">
+    <%- include('add-file') %>
+    <a href="/folders/new" class="btn"><i data-feather="plus" class="btn-feather-icon"></i>&ensp;New folder</a>
+  </div>
+</div>
+
 <script>
   let showAccountMenu = false;
 
