@@ -21,7 +21,7 @@ const createFolder = async (req, res) => {
       userId: req.user.id,
     },
   });
-  res.redirect("/folders");
+  res.redirect("/");
 };
 
 const showFolder = async (req, res) => {
