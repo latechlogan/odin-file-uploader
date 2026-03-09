@@ -5,6 +5,7 @@ import path from "path";
 const listFiles = async (req, res) => {
   const files = await prisma.file.findMany({
     where: { userId: req.user.id },
+    orderBy: { name: "asc" },
   });
   res.render("files", { files: files });
 };
