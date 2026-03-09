@@ -101,8 +101,8 @@ hr {
 
 .btn {
   color: #fff;
-  font-size: 0.9rem;
-  font-weight: bold;
+  font-size: 1rem;
+  font-weight: 600;
   text-decoration: none;
   padding: 0.5rem 1rem;
   border-radius: 0.4rem;
@@ -227,7 +227,7 @@ hr {
   padding: 2rem 2rem 0 2rem;
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
 }
@@ -391,7 +391,7 @@ hr {
   margin-bottom: 1rem;
 }
 
-label {
+.content-card-panel label {
   display: block;
   font-size: 0.875rem;
   font-weight: 500;
@@ -550,4 +550,79 @@ input:focus {
   text-decoration: none;
   text-decoration: underline;
   cursor: pointer;
+}
+
+/* ----- file detail view ----- */
+
+.file-detail-wrapper {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+@media screen and (min-width: 600px) {
+  .file-detail-wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+}
+
+.file-detail-wrapper img {
+  padding: 1rem;
+  background-color: #eee;
+  border: 1px solid #e5e5e5;
+  border-radius: 0.4rem;
+}
+
+.file-detail-wrapper ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.file-detail-wrapper li {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  margin-bottom: 0.25rem;
+}
+
+.file-detail-wrapper li:last-of-type {
+  margin-bottom: 0;
+}
+
+.file-detail__btn-wrapper {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.file-detail__btn {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.4rem;
+  background-color: #333;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.file-detail__btn.delete {
+  color: #d0342c;
+  background-color: rgba(208, 52, 44, 0.1);
 }
