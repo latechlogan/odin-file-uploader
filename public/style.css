@@ -287,6 +287,8 @@ hr {
 }
 
 .account-menu-greeting {
+  font-size: 1.2rem;
+  font-weight: 600;
   padding: 0.5rem;
 }
 
@@ -294,7 +296,7 @@ hr {
   padding: 0 0.5rem 0.5rem 0.5rem;
 }
 
-.account-menu button {
+.account-menu__btn {
   text-align: left;
   width: 100%;
   padding: 0.5rem;
@@ -305,8 +307,12 @@ hr {
   transition: background 120ms ease-in;
 }
 
-.account-menu button:hover {
+.account-menu__btn:hover {
   background: #eee;
+}
+
+.account-menu__btn.inactive {
+  color: #bbb;
 }
 
 /* ─── Folder menu ───────────────────────────────────── */

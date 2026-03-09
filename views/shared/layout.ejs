@@ -18,12 +18,12 @@
         <span class="account-menu-greeting">Hi, <%= user.username %>!</span>
         <small class="account-menu-detail"><%= user.email %></small>
         <hr>
-        <button>Settings</button>
-        <button>Manage Account</button>
-        <button>Theme</button>
+        <button class="account-menu__btn inactive">Settings</button>
+        <button class="account-menu__btn inactive">Manage Account</button>
+        <button class="account-menu__btn inactive">Theme</button>
         <hr>
         <form action="/logout" method="post">
-          <button type="submit">Logout</button>
+          <button type="submit" class="account-menu__btn">Logout</button>
         </form>
       </span>
     <% } %>
