@@ -31,6 +31,7 @@ const showFolder = async (req, res) => {
   const folder = await prisma.folder.findUnique({
     where: { id: folderId, userId: req.user.id },
   });
+  if (!folder) return res.status(404).send("Folder not found.");
   const files = await prisma.file.findMany({
     where: {
       folderId,
@@ -49,6 +50,7 @@ const editFolderForm = async (req, res) => {
       userId: req.user.id,
     },
   });
+  if (!folder) return res.status(404).send("Folder not found.");
   res.render("edit-folder", { folder });
 };
 

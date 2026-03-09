@@ -47,6 +47,7 @@ const showFile = async (req, res) => {
   const file = await prisma.file.findUnique({
     where: { id: fileId, userId: req.user.id },
   });
+  if (!file) return res.status(404).send("File not found.");
   res.render("file-detail", {
     file: file,
     supabaseUrl: process.env.SUPABASE_URL,
@@ -56,8 +57,9 @@ const showFile = async (req, res) => {
 const downloadFile = async (req, res) => {
   const fileId = parseInt(req.params.id);
   const file = await prisma.file.findUnique({
-    where: { id: fileId },
+    where: { id: fileId, userId: req.user.id },
   });
+  if (!file) return res.status(404).send("File not found.");
 
   // const fileUrl = `${process.env.SUPABASE_URL}/storage/v1/object/public/uploads/${file.path}`;
   // res.redirect(fileUrl);
@@ -80,6 +82,7 @@ const deleteFile = async (req, res) => {
   const targetFile = await prisma.file.findUnique({
     where: { id: fileId, userId: req.user.id },
   });
+  if (!targetFile) return res.status(404).send("File not found.");
 
   const { data, error } = await supabase.storage
     .from("uploads")
