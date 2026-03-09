@@ -4,7 +4,7 @@ import { supabase } from "../lib/supabase.js";
 const listFolders = async (req, res) => {
   const folders = await prisma.folder.findMany({
     where: { userId: req.user.id },
-    orderBy: { createdAt: "asc" },
+    orderBy: { name: "asc" },
   });
   res.render("folders", { folders });
 };
