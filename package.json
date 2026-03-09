@@ -33,6 +33,7 @@
     "ejs": "^4.0.1",
     "express": "^5.2.1",
     "express-session": "^1.19.0",
+    "feather-icons": "^4.29.2",
     "multer": "^2.1.0",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
