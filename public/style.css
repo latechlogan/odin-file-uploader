@@ -474,6 +474,35 @@ input:focus {
   font-weight: bold;
 }
 
+/* ─── View toggle ───────────────────────────────────── */
+
+.view-toggle {
+  display: flex;
+  flex-direction: row;
+  gap: 0.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.view-toggle__link {
+  font-size: 0.8rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  color: #555;
+  border: 1px solid transparent;
+}
+
+.view-toggle__link:hover {
+  background: #e6e6e6;
+}
+
+.view-toggle__link--active {
+  background: #e6e6e6;
+  border-color: #ccc;
+  color: #222;
+  font-weight: 500;
+}
+
 .files,
 .folders {
   margin: 0 auto 3rem auto;

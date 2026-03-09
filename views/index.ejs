@@ -17,32 +17,67 @@
         <a href="<%= currentPath %>">Clear</a>
       <% } %>
 
-      <% if (files.length > 0) { %>
-        <section class="files">
-          <h2 class="files-heading">Files</h2>
-          <ul class="files-grid">
-            <% files.forEach(file => { %>
-              <a href="/files/<%= file.id %>" class="file-elements">
-                <img src="/images/save.png" alt="" class="file-icon">
-                <span class="file-name"><%= file.name %></span>
-              </a>
-            <% }) %>
-          </ul>
-        </section>
-      <% } %>
+      <div class="view-toggle">
+        <a href="/?<%= search ? 'search=' + encodeURIComponent(search) + '&' : '' %>view=separate" class="view-toggle__link<%= viewMode === 'separate' ? ' view-toggle__link--active' : '' %>">Separate</a>
+        <a href="/?<%= search ? 'search=' + encodeURIComponent(search) + '&' : '' %>view=combined" class="view-toggle__link<%= viewMode === 'combined' ? ' view-toggle__link--active' : '' %>">Combined</a>
+      </div>
 
-      <% if (folders.length > 0) { %>
-        <section class="folders">
-          <h2 class="folders-heading">Folders</h2>
-          <ul class="folders-grid">
-            <% folders.forEach(folder => { %>
-              <a href="/folders/<%= folder.id %>" class="folder-elements">
-                <img src="/images/folder.png" alt="" class="folder-icon">
-                <span class="folder-name"><%= folder.name %></span>
-              </a>
-            <% }) %>
-          </ul>
-        </section>
+      <% if (viewMode === 'combined') { %>
+        <%
+          const combined = [
+            ...files.map(f => ({ ...f, type: 'file' })),
+            ...folders.map(f => ({ ...f, type: 'folder' }))
+          ].sort((a, b) => a.name.localeCompare(b.name));
+        %>
+        <% if (combined.length > 0) { %>
+          <section class="files">
+            <ul class="files-grid">
+              <% combined.forEach(item => { %>
+                <% if (item.type === 'file') { %>
+                  <a href="/files/<%= item.id %>" class="file-elements">
+                    <img src="/images/save.png" alt="" class="file-icon">
+                    <span class="file-name"><%= item.name %></span>
+                  </a>
+                <% } else { %>
+                  <a href="/folders/<%= item.id %>" class="folder-elements">
+                    <img src="/images/folder.png" alt="" class="folder-icon">
+                    <span class="folder-name"><%= item.name %></span>
+                  </a>
+                <% } %>
+              <% }) %>
+            </ul>
+          </section>
+        <% } %>
+      <% } else { %>
+
+        <% if (files.length > 0) { %>
+          <section class="files">
+            <h2 class="files-heading">Files</h2>
+            <ul class="files-grid">
+              <% files.forEach(file => { %>
+                <a href="/files/<%= file.id %>" class="file-elements">
+                  <img src="/images/save.png" alt="" class="file-icon">
+                  <span class="file-name"><%= file.name %></span>
+                </a>
+              <% }) %>
+            </ul>
+          </section>
+        <% } %>
+
+        <% if (folders.length > 0) { %>
+          <section class="folders">
+            <h2 class="folders-heading">Folders</h2>
+            <ul class="folders-grid">
+              <% folders.forEach(folder => { %>
+                <a href="/folders/<%= folder.id %>" class="folder-elements">
+                  <img src="/images/folder.png" alt="" class="folder-icon">
+                  <span class="folder-name"><%= folder.name %></span>
+                </a>
+              <% }) %>
+            </ul>
+          </section>
+        <% } %>
+
       <% } %>
     </main>
   <% } else { %>

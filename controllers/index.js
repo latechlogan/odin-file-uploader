@@ -21,12 +21,14 @@ const homepage = async (req, res) => {
       orderBy: { name: "asc" },
     });
     const error = req.query.error || null;
+    const viewMode = req.query.view === 'combined' ? 'combined' : 'separate';
     res.render("index", {
       pageContext: "index",
       files,
       folders,
       search,
       error,
+      viewMode,
     });
   } else {
     res.render("index", {
