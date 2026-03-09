@@ -8,3 +8,18 @@
     <input type="file" name="file" />
     <button type="submit">Upload a File</button>
 </form>
+    <% if (typeof error !== 'undefined' && error) { %>
+        <p style="color: red;"><%= error %></p>
+    <% } %>
+</div>
+
+<script>
+    const fileInput = document.querySelector('#fileInput');
+    const fileForm = document.querySelector('#addFileForm');
+
+    fileInput.addEventListener('change', function() {
+        if (this.files && this.files.length > 0) {
+            fileForm.submit();
+        }
+    });
+</script>
