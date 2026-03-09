@@ -1,0 +1,31 @@
+<div class="layout-submenu">
+  <div class="layout-submenu__details">
+    <% if (typeof pageContext !== 'undefined' && pageContext == "folder") { %>
+        <p class="greeting"><%= folder.name %></p>
+        <span class="folder-menu-section">
+            <button class="folder-menu-toggle"><i data-feather="settings" class="btn-feather-icon"></i></button>
+            <span class="folder-menu hidden">
+                <a href="/folders/<%= folder.id %>/edit" class="folder-menu__item">Rename Folder</a>
+                <hr>
+                <form action="/folders/<%= folder.id %>/delete" method="post" onsubmit="return confirm('Are you sure you want to delete the folder: <%= folder.name %>?');">
+                    <button type="submit" class="folder-menu__item folder-menu__item--danger">Delete Folder</button>
+                </form>
+            </span>
+        </span>
+    <% } else if (typeof pageContext !== 'undefined' && pageContext == 'file') { %>
+        <p class="greeting"><%= file.name %></p>
+    <% } else { %>
+        <p class="greeting">All files</p>
+    <% } %>
+    </div>
+    <div class="layout-submenu__btns">
+        <% if (typeof pageContext !== 'undefined' && pageContext == 'file') { %>
+            <!-- display no buttons -->
+        <% } else if (typeof pageContext !== 'undefined' && pageContext == 'folder') { %>
+            <%- include('add-file') %>
+        <% } else { %>
+            <%- include('add-file') %>
+            <a href="/folders/new" class="btn"><i data-feather="plus" class="btn-feather-icon"></i>&ensp;New folder</a>
+        <% } %>
+    </div>
+</div>

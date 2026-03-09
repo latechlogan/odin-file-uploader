@@ -49,6 +49,7 @@ const showFile = async (req, res) => {
   });
   if (!file) return res.status(404).send("File not found.");
   res.render("file-detail", {
+    pageContext: "file",
     file: file,
     supabaseUrl: process.env.SUPABASE_URL,
   });

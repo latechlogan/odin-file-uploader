@@ -39,7 +39,13 @@ const showFolder = async (req, res) => {
       ...(search && { name: { contains: search, mode: "insensitive" } }),
     },
   });
-  res.render("folder-detail", { folder, files, search, error });
+  res.render("folder-detail", {
+    pageContext: "folder",
+    folder,
+    files,
+    search,
+    error,
+  });
 };
 
 const editFolderForm = async (req, res) => {
