@@ -1,13 +1,11 @@
-<% if (error) { %>
-  <p style="color: red;"><%= error %></p>
-<% } %>
-<form action="/files/upload" method="post" enctype="multipart/form-data">
-    <% if (typeof folder !== 'undefined') { %>
-        <input type="hidden" name="folderId" value="<%= folder.id %>" />
-    <% } %>
-    <input type="file" name="file" />
-    <button type="submit">Upload a File</button>
-</form>
+<div class="add-file">
+    <form action="/files/upload" method="post" enctype="multipart/form-data" id="addFileForm">
+        <% if (typeof folder !== 'undefined') { %>
+            <input type="hidden" name="folderId" value="<%= folder.id %>" />
+        <% } %>
+        <label for="fileInput" class="btn"><i data-feather="upload" class="btn-feather-icon"></i>&ensp;Upload file</label>
+        <input type="file" name="file" id="fileInput" style="display: none;" />
+    </form>
     <% if (typeof error !== 'undefined' && error) { %>
         <p style="color: red;"><%= error %></p>
     <% } %>
