@@ -10,9 +10,9 @@
   <%- include('shared/layout') %>
 
   <% if (user) { %>
-    <main style="padding: 2rem;">
+    <main class="main-content-wrapper">
       <!-- <p class="greeting">Welcome back, <%= user.username %></p> -->
-      <%- include('shared/add-file') %>
+      <!-- <%- include('shared/add-file') %> -->
 
       <% if (search) { %>
         <p>Showing results for "<%= search %>"</p>
@@ -33,7 +33,6 @@
 
       <section class="folders">
         <h2 class="folders-heading">Folders</h2>
-        <a href="/folders/new">New Folder</a>
         <ul class="folders-grid">
           <% folders.forEach(folder => { %>
             <a href="/folders/<%= folder.id %>" class="folder-elements">

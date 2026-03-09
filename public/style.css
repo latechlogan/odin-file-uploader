@@ -1,11 +1,72 @@
 /* ─── Reset ─────────────────────────────────────────── */
 
+/*
+  Josh's Custom CSS Reset
+  https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+*:not(dialog) {
   margin: 0;
-  padding: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+p {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+#root,
+#__next {
+  isolation: isolate;
 }
 
 /* ─── Base ──────────────────────────────────────────── */
@@ -36,6 +97,41 @@ hr {
   border: none;
   border-top: 1px solid #ddd;
   margin: 0.5rem;
+}
+
+.btn {
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.4rem;
+  background-color: #333;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-feather-icon {
+  width: 1rem;
+  stroke-width: 3px;
+}
+
+/* ─── Layout helpers ────────────────────────────────── */
+
+.main-content-wrapper {
+  padding: 2rem;
+}
+
+.content-card-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
 }
 
 /* ─── Site header ───────────────────────────────────── */
@@ -201,16 +297,6 @@ hr {
 
 .account-menu button:hover {
   background: #eee;
-}
-
-/* ─── Layout helpers ────────────────────────────────── */
-
-.content-card-wrapper {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem 1rem;
 }
 
 /* ─── Auth panel (login / register forms) ───────────── */
