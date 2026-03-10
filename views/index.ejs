@@ -18,7 +18,7 @@
       <% } %>
 
       <div class="view-toggle">
-        <a href="/?<%= search ? 'search=' + encodeURIComponent(search) + '&' : '' %>view=separate" class="view-toggle__link<%= viewMode === 'separate' ? ' view-toggle__link--active' : '' %>">Separate</a>
+        <a href="/?<%= search ? 'search=' + encodeURIComponent(search) + '&' : '' %>view=separate" class="view-toggle__link<%= viewMode === 'separate' ? ' view-toggle__link--active' : '' %>">Grouped</a>
         <a href="/?<%= search ? 'search=' + encodeURIComponent(search) + '&' : '' %>view=combined" class="view-toggle__link<%= viewMode === 'combined' ? ' view-toggle__link--active' : '' %>">Combined</a>
       </div>
 
