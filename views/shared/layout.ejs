@@ -30,7 +30,9 @@
   </span>
 </header>
 
-<%- include('layout-submenu') %>
+<% if (user) { %>
+  <%- include('layout-submenu') %>
+<% } %>
 
 <script>
   let showAccountMenu = false;
