@@ -29,6 +29,7 @@ const homepage = async (req, res) => {
       search,
       error,
       viewMode,
+      supabaseUrl: process.env.SUPABASE_URL,
     });
   } else {
     res.render("index", {

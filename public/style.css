@@ -554,13 +554,20 @@ input:focus {
   align-items: center;
 }
 
+.img-wrapper {
+  width: 4rem;
+  aspect-ratio: 1 / 1;
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .file-icon,
 .folder-icon {
-  width: 4rem;
-  height: auto;
-  margin-bottom: 0.5rem;
-  object-fit: contain;
-  object-position: center;
+  width: auto;
+  height: 100%;
 }
 
 .file-name,

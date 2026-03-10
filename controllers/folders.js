@@ -45,6 +45,7 @@ const showFolder = async (req, res) => {
     files,
     search,
     error,
+    supabaseUrl: process.env.SUPABASE_URL,
   });
 };
 

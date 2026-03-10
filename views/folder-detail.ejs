@@ -29,7 +29,13 @@
             <% files.forEach(file => { %>
               <li>
                 <a href="/files/<%= file.id %>" class="file-elements">
-                  <img src="/images/save.png" alt="" class="file-icon">
+                  <div class="img-wrapper">
+                    <% if (file.mimeType && file.mimeType.startsWith('image/')) { %>
+                      <img src="<%= supabaseUrl %>/storage/v1/object/public/uploads/<%= file.path %>" alt="<%= file.name %>" class="file-icon">
+                    <% } else { %>
+                      <img src="/images/save.png" alt="" class="file-icon">
+                    <% } %>
+                  </div>
                   <span class="file-name"><%= file.name %> (<%= file.mimeType %>, <%= file.size %> bytes)</span>
                 </a>
               </li>
