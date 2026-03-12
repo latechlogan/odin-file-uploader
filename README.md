@@ -11,7 +11,6 @@ A Google Drive-style file storage app where users can organize files into folder
 | Username | Password    |
 |----------|-------------|
 | alice    | password123 |
-| bob      | password123 |
 
 ## Features
 
